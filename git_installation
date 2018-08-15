@@ -1,0 +1,53 @@
+Installation and Configuration of Git :
+
+Install git on centos/Rhel by using command : yum install git
+
+=============================================================================================================================
+
+If the command completes without error, you will have git downloaded and installed. To double-check that it is working correctly, try running Git's built-in version check:
+
+git --version
+
+=============================================================================================================================
+
+Set Up Git:
+
+Now that you have git installed, you will need to submit some information about yourself so that commit messages will be generated with the correct information attached. To do this, use the git config command to provide the name and email address that you would like to have embedded into your commits:
+
+git config --global user.name "Your Name"
+git config --global user.email "you@example.com"
+
+=============================================================================================================================
+
+To confirm that these configurations were added successfully, we can see all of the configuration items that have been set by typing:
+
+git config --list
+
+Output will be:  user.name=Your Name
+                 user.email=you@example.com
+
+=============================================================================================================================
+
+Creating your workspace after Git installation on your system:
+
+The first thing we need to do is create our workspace environment:
+
+user@host ~ $ mkdir -p ~/git/testing ; cd ~/git/testing
+
+The above commands will accomplish two things: 1) It creates a directory called "git" in our home directory and then creates a subdirectory inside of that called "testing" (this is where our project will actually be stored). 2) It brings us to our project's base directory.
+
+Once inside that directory, we need to create a few files that will be in our project. In this step, you can either follow along and create a few dummy files for testing purposes or you can create files/directories you wish that are going to be part of your project.
+
+We are going to create a test file to use in our repository:
+
+user@host ~/git/testing $ touch file
+
+then create a new repository on the command line
+
+git init
+git add filename || -A
+git commit -m filename
+git remote add origin https://github.com/cpsuman/aws-cli.git
+git push -u origin master
+
+
