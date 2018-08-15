@@ -1,0 +1,252 @@
+Installation of aws-cli step :
+==============================================================================================================================
+1. Download the epel-release using wget command: wget http://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+
+[EPEL (Extra Packages for Enterprise Linux) is open source and free community based repository project from Fedora team which provides 100% high quality add-on software packages for Linux distribution including RHEL (Red Hat Enterprise Linux), CentOS, and Scientific Linux. Epel project is not a part of RHEL/Cent OS but it is designed for major Linux distributions by providing lots of open source packages like networking, sys admin, programming, monitoring and so on. Most of the epel packages are maintained by Fedora repo]
+
+2. Install epel-release rpm using: rpm -ivh epel-release-latest-7.noarch.rpm
+
+3. Verify EPEL Repo using : yum repolist
+
+4. install python-pip : yum install python-pip [This is manageges the amazon packages/cli packages]
+
+   Verify the pip is installed : rpm -qa | grep pip
+
+5. Now install aws-cli : pip install awscli botocore [Botocore is a low-level interface to a growing number of Amazon Web Services. Botocore serves as the foundation for the AWS-CLI command line utilities.] 
+
+6. after installation of aws-cli run the command: aws configure 
+
+      it wll ask : AWS Access Key Id, AWS secret Access Key, default region name and default output format : 
+   
+   *  access key and secret key u will get it from aws console->Click on your user name at the top right of the page->Click on the Security Credentials link from the drop-down menu->Find the Access Credentials section, and copy the latest Access Key ID    
+==============================================================================================================================
+
+If u want to see the detailed of aws instances in table	format run the below command:
+
+[root@awsclilab ~]# aws ec2 describe-instances --output table
+--------------------------------------------------------------------------------------
+|                                  DescribeInstances                                 |
++------------------------------------------------------------------------------------+
+||                                   Reservations                                   ||
+|+----------------------------------+-----------------------------------------------+|
+||  OwnerId                         |  76xxxxxxxx                                 ||
+||  ReservationId                   |  r-08xxxxxxxxxxx6                          ||
+|+----------------------------------+-----------------------------------------------+|
+|||                                    Instances                                   |||
+||+---------------------------+----------------------------------------------------+||
+|||  AmiLaunchIndex           |  x                                                 |||
+|||  Architecture             |  x86_64                                            |||
+|||  ClientToken              |                                                    |||
+|||  EbsOptimized             |  False                                             |||
+|||  EnaSupport               |  True                                              |||
+|||  Hypervisor               |  xen                                               |||
+|||  ImageId                  |  ami-e5441e8a                                      |||
+|||  InstanceId               |  i-0xxxxxxxxxx6                               |||
+|||  InstanceType             |  t2.micro                                          |||
+|||  KeyName                  |  pratap                                            |||
+|||  LaunchTime               |  2018-08-12T04:53:53.000Z                          |||
+|||  PrivateDnsName           |  ip-xxxxxxxxxxxxxx.compute.internal        |||
+|||  PrivateIpAddress         |  1xx.xx.xx.0                                       |||
+|||  PublicDnsName            |                                                    |||
+|||  RootDeviceName           |  /dev/xvda                                         |||
+|||  RootDeviceType           |  ebs                                               |||
+|||  SourceDestCheck          |  True                                              |||
+|||  StateTransitionReason    |  User initiated (2018-08-12 07:19:16 GMT)          |||
+|||  SubnetId                 |  subnet-9xxxxxxe                                   |||
+|||  VirtualizationType       |  hvm                                                |||
+|||  VpcId                    |  vpc-2xxxxxxx0                                      |||
+||+---------------------------+----------------------------------------------------+||
+||||                              BlockDeviceMappings                             ||||
+|||+---------------------------------------+--------------------------------------+|||
+||||  DeviceName                           |  /dev/xvda                           ||||
+|||+---------------------------------------+--------------------------------------+|||
+|||||                                     Ebs                                    |||||
+||||+---------------------------------+------------------------------------------+||||
+|||||  AttachTime                     |  2018-05-02T09:31:06.000Z                |||||
+|||||  DeleteOnTermination            |  True                                    |||||
+|||||  Status                         |  attached                                |||||
+|||||  VolumeId                       |  vol-0xxxxxxxxxxxxxxx2                   |||||
+||||+---------------------------------+------------------------------------------+||||
+||||                                  CpuOptions                                  ||||
+|||+-------------------------------------------------------------+----------------+|||
+||||  CoreCount                                                  |  1             ||||
+||||  ThreadsPerCore                                             |  1             ||||
+|||+-------------------------------------------------------------+----------------+|||
+||||                                  Monitoring                                  ||||
+|||+--------------------------------+---------------------------------------------+|||
+||||  State                         |  disabled                                   ||||
+|||+--------------------------------+---------------------------------------------+|||
+||||                               NetworkInterfaces                              ||||
+|||+------------------------+-----------------------------------------------------+|||
+||||  Description           |                                                     ||||
+||||  MacAddress            |  0xxxxxxxxxxxx8                                  ||||
+||||  NetworkInterfaceId    |  eni-fxxxxxxxxxxx                                      ||||
+||||  OwnerId               |  7xxxxxxxxxxxx0                                       ||||
+||||  PrivateDnsName        |  ip-1xxxxxxxxxxxxxxxxx.compute.internal         ||||
+||||  PrivateIpAddress      |  1xxxxxxxxxx0                                        ||||
+||||  SourceDestCheck       |  True                                               ||||
+||||  Status                |  in-use                                             ||||
+||||  SubnetId              |  subnet-9xxxxxxxxe                                    ||||
+||||  VpcId                 |  vpc-2xxxxxxxx0                                       ||||
+|||+------------------------+-----------------------------------------------------+|||
+|||||                                 Attachment                                 |||||
+||||+---------------------------------+------------------------------------------+||||
+|||||  AttachTime                     |  2018-05-02T09:31:06.000Z                |||||
+|||||  AttachmentId                   |  eni-xxxxxxxxxxxff                     |||||
+|||||  DeleteOnTermination            |  True                                    |||||
+|||||  DeviceIndex                    |  0                                       |||||
+|||||  Status                         |  attached                                |||||
+||||+---------------------------------+------------------------------------------+||||
+|||||                                   Groups                                   |||||
+||||+----------------------------------+-----------------------------------------+||||
+|||||  GroupId                         |  sg-6xxxxxxxxxxxxxx                          |||||
+|||||  GroupName                       |  default                                |||||
+||||+----------------------------------+-----------------------------------------+||||
+|||||                             PrivateIpAddresses                             |||||
+||||+----------------------+-----------------------------------------------------+||||
+|||||  Primary             |  True                                               |||||
+|||||  PrivateDnsName      |  ip-1xxxxxxxxxxxxxxxxxxxxxxx.compute.internal         |||||
+|||||  PrivateIpAddress    |  1xxxxxxxxxxxxxxxx0                                        |||||
+||||+----------------------+-----------------------------------------------------+||||
+||||                                   Placement                                  ||||
+|||+--------------------------------------------+---------------------------------+|||
+||||  AvailabilityZone                          |  axxxxxxxxxxa                    ||||
+||||  GroupName                                 |                                 ||||
+||||  Tenancy                                   |  default                        ||||
+|||+--------------------------------------------+---------------------------------+|||
+||||                                SecurityGroups                                ||||
+|||+-----------------------------------+------------------------------------------+|||
+||||  GroupId                          |  sg-6xxxxxxxxxxxx                            ||||
+||||  GroupName                        |  default                                 ||||
+|||+-----------------------------------+------------------------------------------+|||
+||||                                     State                                    ||||
+|||+--------------------------------+---------------------------------------------+|||
+||||  Code                          |  80                                         ||||
+||||  Name                          |  stopped                                    ||||
+|||+--------------------------------+---------------------------------------------+|||
+||||                                  StateReason                                 ||||
+|||+-----------+------------------------------------------------------------------+|||
+||||  Code     |  Client.UserInitiatedShutdown                                    ||||
+||||  Message  |  Client.UserInitiatedShutdown: User initiated shutdown           ||||
+|||+-----------+------------------------------------------------------------------+|||
+||||                                     Tags                                     ||||
+|||+---------------------------+--------------------------------------------------+|||
+||||  Key                      |  Name                                            ||||
+||||  Value                    |  Amazon-linux                                    ||||
+|||+---------------------------+--------------------------------------------------+|||
+||                                   Reservations                                   ||
+|+----------------------------------+-----------------------------------------------+|
+||  OwnerId                         |  7xxxxxxxxxxxxxx0                                 ||
+||  ReservationId                   |  r-0xxxxxxxxxxxxxxxx4                          ||
+|+----------------------------------+-----------------------------------------------+|
+|||                                    Instances                                   |||
+||+------------------------+-------------------------------------------------------+||
+|||  AmiLaunchIndex        |  0                                                    |||
+|||  Architecture          |  x86_64                                               |||
+|||  ClientToken           |                                                       |||
+|||  EbsOptimized          |  False                                                |||
+|||  EnaSupport            |  True                                                 |||
+|||  Hypervisor            |  xen                                                  |||
+|||  ImageId               |  ami-5xxxxxxx4                                         |||
+|||  InstanceId            |  i-0xxxxxxxxxxxxxxxxxxx                               |||
+|||  InstanceType          |  t2.micro                                             |||
+|||  KeyName               |  pratap                                               |||
+|||  LaunchTime            |  2018-08-14T17:41:33.000Z                             |||
+|||  PrivateDnsName        |  ip-1xxxxxxxxxxxxxxxxxxxx.compute.internal          |||
+|||  PrivateIpAddress      |  1xxxxxxxxxxxxxx1                                         |||
+|||  PublicDnsName         |  exxxxxxxxxxxxxxxxxxxxx.compute.amazonaws.com  |||
+|||  PublicIpAddress       |  1xxxxxxxxxxxxxxxxx1                                       |||
+|||  RootDeviceName        |  /dev/sda1                                            |||
+|||  RootDeviceType        |  ebs                                                  |||
+|||  SourceDestCheck       |  True                                                 |||
+|||  StateTransitionReason |                                                       |||
+|||  SubnetId              |  subnet-9xxxxxxxxxxxxe                                      |||
+|||  VirtualizationType    |  hvm                                                  |||
+|||  VpcId                 |  vpc-2xxxxxxxxxx0                                         |||
+||+------------------------+-------------------------------------------------------+||
+||||                              BlockDeviceMappings                             ||||
+|||+---------------------------------------+--------------------------------------+|||
+||||  DeviceName                           |  /dev/sda1                           ||||
+|||+---------------------------------------+--------------------------------------+|||
+|||||                                     Ebs                                    |||||
+||||+---------------------------------+------------------------------------------+||||
+|||||  AttachTime                     |  2018-08-12T04:51:06.000Z                |||||
+|||||  DeleteOnTermination            |  True                                    |||||
+|||||  Status                         |  attached                                |||||
+|||||  VolumeId                       |  vol-0xxxxxxxxxxxxxxx4                   |||||
+||||+---------------------------------+------------------------------------------+||||
+||||                                  CpuOptions                                  ||||
+|||+-------------------------------------------------------------+----------------+|||
+||||  CoreCount                                                  |  1             ||||
+||||  ThreadsPerCore                                             |  1             ||||
+|||+-------------------------------------------------------------+----------------+|||
+||||                                  Monitoring                                  ||||
+|||+--------------------------------+---------------------------------------------+|||
+||||  State                         |  disabled                                   ||||
+|||+--------------------------------+---------------------------------------------+|||
+||||                               NetworkInterfaces                              ||||
+|||+------------------------+-----------------------------------------------------+|||
+||||  Description           |                                                     ||||
+||||  MacAddress            |  0xxxxxxxxxxxxxxxxx8                                  ||||
+||||  NetworkInterfaceId    |  enxxxxxxxxxxxxxxxxx0                              ||||
+||||  OwnerId               |  7xxxxxxxxxxxxxxx0                                       ||||
+||||  PrivateDnsName        |  ip-xxxxxxxxxxxxxxxxxxxcompute.internal        ||||
+||||  PrivateIpAddress      |  1xxxxxxxxxxxxxxx1                                       ||||
+||||  SourceDestCheck       |  True                                               ||||
+||||  Status                |  in-use                                             ||||
+||||  SubnetId              |  subnet-9xxxxxxxxxxxxxe                                    ||||
+||||  VpcId                 |  vpc-2xxxxxxxxxxxxxx0                                       ||||
+|||+------------------------+-----------------------------------------------------+|||
+|||||                                 Association                                |||||
+||||+----------------+-----------------------------------------------------------+||||
+|||||  IpOwnerId     |  amazon                                                   |||||
+|||||  PublicDnsName |  ec2-xxxxxxxxxxxxxxxxxxxx.compute.amazonaws.com      |||||
+|||||  PublicIp      |  1xxxxxxxxxxxxxxxxx1                                           |||||
+||||+----------------+-----------------------------------------------------------+||||
+|||||                                 Attachment                                 |||||
+||||+-------------------------------+--------------------------------------------+||||
+|||||  AttachTime                   |  2018-08-12T04:51:05.000Z                  |||||
+|||||  AttachmentId                 |  enxxxxxxxxxxxxxxxxxxxx6              |||||
+|||||  DeleteOnTermination          |  True                                      |||||
+|||||  DeviceIndex                  |  0                                         |||||
+|||||  Status                       |  attached                                  |||||
+||||+-------------------------------+--------------------------------------------+||||
+|||||                                   Groups                                   |||||
+||||+-------------------------+--------------------------------------------------+||||
+|||||  GroupId                |  sg-0xxxxxxxxxxxxxxxxx3                            |||||
+|||||  GroupName              |  launch-wizard-5                                 |||||
+||||+-------------------------+--------------------------------------------------+||||
+|||||                             PrivateIpAddresses                             |||||
+||||+---------------------+------------------------------------------------------+||||
+|||||  Primary            |  True                                                |||||
+|||||  PrivateDnsName     |  ip-1xxxxxxxxxxxxxxxxxxxx.compute.internal         |||||
+|||||  PrivateIpAddress   |  1xxxxxxxxxxxxx1                                        |||||
+||||+---------------------+------------------------------------------------------+||||
+||||||                                Association                               ||||||
+|||||+----------------+---------------------------------------------------------+|||||
+||||||  IpOwnerId     |  amazon                                                 ||||||
+||||||  PublicDnsName |  ecxxxxxxxxxxxxxxxxxxx.compute.amazonaws.com    ||||||
+||||||  PublicIp      |  1xxxxxxxxxxxxxxxxxxx1                                         ||||||
+|||||+----------------+---------------------------------------------------------+|||||
+||||                                   Placement                                  ||||
+|||+--------------------------------------------+---------------------------------+|||
+||||  AvailabilityZone                          |  axxxxxxxxxxxxa                    ||||
+||||  GroupName                                 |                                 ||||
+||||  Tenancy                                   |  default                        ||||
+|||+--------------------------------------------+---------------------------------+|||
+||||                                SecurityGroups                                ||||
+|||+--------------------------+---------------------------------------------------+|||
+||||  GroupId                 |  sg-0xxxxxxxxxxxxxxx3                             ||||
+||||  GroupName               |  launch-wizard-5                                  ||||
+|||+--------------------------+---------------------------------------------------+|||
+||||                                     State                                    ||||
+|||+--------------------------------+---------------------------------------------+|||
+||||  Code                          |  16                                         ||||
+||||  Name                          |  running                                    ||||
+|||+--------------------------------+---------------------------------------------+|||
+||||                                     Tags                                     ||||
+|||+----------------------------------------+-------------------------------------+|||
+||||  Key                                   |  Name                               ||||
+||||  Value                                 |  Rhel                               ||||
+|||+----------------------------------------+-------------------------------------+|||
+
